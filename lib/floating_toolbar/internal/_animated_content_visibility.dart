@@ -73,10 +73,7 @@ class _AnimatedContentVisibilityState extends State<AnimatedContentVisibility>
           sizeFactor: _controller,
           axis: widget.isVertical ? Axis.vertical : Axis.horizontal,
           alignment: Alignment.center,
-          child: Opacity(
-            opacity: value.clamp(0.0, 1.0),
-            child: widget.child,
-          ),
+          child: Opacity(opacity: value.clamp(0.0, 1.0), child: widget.child),
         );
       },
     );

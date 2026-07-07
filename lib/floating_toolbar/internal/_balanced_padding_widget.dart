@@ -90,10 +90,7 @@ class _BalancedPaddingWidgetState extends State<BalancedPaddingWidget>
           }
         }
 
-        return Padding(
-          padding: padding,
-          child: widget.child,
-        );
+        return Padding(padding: padding, child: widget.child);
       },
     );
   }

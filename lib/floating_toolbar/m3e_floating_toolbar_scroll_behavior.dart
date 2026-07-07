@@ -124,7 +124,8 @@ class M3EFloatingToolbarScrollWrapper extends StatefulWidget {
 }
 
 class _M3EFloatingToolbarScrollWrapperState
-    extends State<M3EFloatingToolbarScrollWrapper> with TickerProviderStateMixin {
+    extends State<M3EFloatingToolbarScrollWrapper>
+    with TickerProviderStateMixin {
   SingleMotionController? _settleController;
 
   @override
@@ -157,17 +158,18 @@ class _M3EFloatingToolbarScrollWrapperState
       target = state.collapsedFraction < 0.5 ? 0.0 : state.offsetLimit;
     }
 
-    _settleController = SingleMotionController(
-      motion: widget.behavior.motion.toMotion(),
-      vsync: this,
-      initialValue: state.offset,
-    )
-      ..addListener(() {
-        if (mounted) {
-          state.offset = _settleController!.value;
-        }
-      })
-      ..animateTo(target);
+    _settleController =
+        SingleMotionController(
+            motion: widget.behavior.motion.toMotion(),
+            vsync: this,
+            initialValue: state.offset,
+          )
+          ..addListener(() {
+            if (mounted) {
+              state.offset = _settleController!.value;
+            }
+          })
+          ..animateTo(target);
   }
 
   @override
@@ -227,8 +229,10 @@ class M3EFloatingToolbarVerticalNestedScroll extends StatefulWidget {
     required this.expanded,
     required this.onExpand,
     required this.onCollapse,
-    this.expandScrollDistanceThreshold = M3EFloatingToolbarDefaults.scrollDistanceThreshold,
-    this.collapseScrollDistanceThreshold = M3EFloatingToolbarDefaults.scrollDistanceThreshold,
+    this.expandScrollDistanceThreshold =
+        M3EFloatingToolbarDefaults.scrollDistanceThreshold,
+    this.collapseScrollDistanceThreshold =
+        M3EFloatingToolbarDefaults.scrollDistanceThreshold,
     this.reverseLayout = false,
     required this.child,
   });
@@ -270,7 +274,8 @@ class _M3EFloatingToolbarVerticalNestedScrollState
               _accumulatedScroll = 0.0;
             }
             _accumulatedScroll += adjustedDelta;
-            if (_accumulatedScroll.abs() >= widget.expandScrollDistanceThreshold) {
+            if (_accumulatedScroll.abs() >=
+                widget.expandScrollDistanceThreshold) {
               if (!widget.expanded) {
                 widget.onExpand();
               }

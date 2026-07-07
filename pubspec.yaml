@@ -1,9 +1,9 @@
 name: m3e_floating_toolbar
 description: "Material 3 Expressive floating toolbar components for Flutter."
-version: 0.1.0
-homepage: https://github.com/Mudit200408/m3e_core
-repository: https://github.com/Mudit200408/m3e_core
-issue_tracker: https://github.com/Mudit200408/m3e_core/issues
+version: 0.0.1
+homepage: https://github.com/Mudit200408/m3e_floating_toolbar
+repository: https://github.com/Mudit200408/m3e_floating_toolbar
+issue_tracker: https://github.com/Mudit200408/m3e_floating_toolbar/issues
 
 topics:
   - ui
