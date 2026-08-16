@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: prefer_initializing_formals
+
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/rendering.dart';
 
 import '../m3e_floating_toolbar_theme.dart';
@@ -24,7 +26,7 @@ class M3EHorizontalFabLayout extends MultiChildRenderObjectWidget {
   }) : super(children: [toolbar, fab]);
 
   @override
-  RenderObject createRenderObject(BuildContext context) {
+  RenderHorizontalFabLayout createRenderObject(BuildContext context) {
     return RenderHorizontalFabLayout(
       progress: progress,
       fabPosition: fabPosition,
