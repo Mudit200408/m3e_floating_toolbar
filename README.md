@@ -17,10 +17,13 @@ You can try out the package demo here: [m3e_core demo](https://mudit200408.githu
 ## 🚀 Features
 
 - **Horizontal & Vertical layouts** — standard or FAB-anchored morphing toolbars
+- **Docked toolbar** — full-width pinned bottom toolbar (`M3EDockedToolbar`) with leading/trailing slots
+- **Toolbar divider** — subtle vertical/horizontal separator (`M3EFloatingToolbarDivider`) for action grouping
 - **Spring-driven motion** — expressive motion presets via `M3EMotion` or fully custom spring physics
 - **Scroll-to-exit** — toolbars auto-hide on scroll with configurable direction, threshold, and settle animation
 - **Nested scroll expand/collapse** — scroll up/down to toggle toolbar visibility via `M3EFloatingToolbarVerticalNestedScroll`
 - **FAB morphing** — toolbars that expand/collapse from a Floating Action Button with spring animation
+- **Alignment** — `alignment` parameter on all variants for direct Stack positioning
 - **Color theming** — standard and vibrant color palettes, fully customizable via `M3EFloatingToolbarColors`
 - **Accessibility** — custom semantics actions for TalkBack / VoiceOver
 - **Tooltip support** — long-press tooltip for all toolbar variants
@@ -41,7 +44,7 @@ Add `m3e_floating_toolbar` and `material_ui` to your `pubspec.yaml`:
 ```yaml
 dependencies:
   material_ui: ^1.0.0
-  m3e_floating_toolbar: ^1.0.0
+  m3e_floating_toolbar: ^1.0.1
 ```
 
 ```dart
@@ -331,6 +334,65 @@ M3EFabVerticalFloatingToolbar(
 )
 ```
 
+#### `M3EDockedToolbar`
+
+Full-width pinned bottom toolbar with leading/trailing slots and elevation tokens.
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `content` | `Widget` | — | Main toolbar content (e.g. Row of actions) |
+| `leading` | `Widget?` | — | Optional leading widget (e.g. navigation icon) |
+| `trailing` | `Widget?` | — | Optional trailing widget (e.g. overflow menu) |
+| `height` | `double` | `64.0` | Custom container height |
+| `padding` | `EdgeInsetsGeometry` | `EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0)` | Inner padding |
+| `backgroundColor` | `Color?` | `colorScheme.surfaceContainer` | Custom background color |
+| `elevation` | `double` | `2.0` | Shadow elevation |
+| `shape` | `ShapeBorder?` | — | Custom shape border |
+| `alignment` | `AlignmentGeometry?` | — | Stack alignment |
+
+```dart
+M3EDockedToolbar(
+  leading: IconButton(
+    icon: const Icon(Icons.menu),
+    onPressed: () => Scaffold.of(context).openDrawer(),
+  ),
+  content: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      IconButton(icon: const Icon(Icons.home_rounded), onPressed: () {}),
+      IconButton(icon: const Icon(Icons.search_rounded), onPressed: () {}),
+      IconButton(icon: const Icon(Icons.person_rounded), onPressed: () {}),
+    ],
+  ),
+  trailing: IconButton(
+    icon: const Icon(Icons.more_vert),
+    onPressed: () {},
+  ),
+)
+```
+
+#### `M3EFloatingToolbarDivider`
+
+Subtle Material 3 Expressive divider for spacing toolbar actions.
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `orientation` | `Axis` | `Axis.vertical` | Divider orientation |
+| `length` | `double` | `24.0` | Length along cross-axis |
+| `thickness` | `double` | `1.0` | Line thickness |
+| `color` | `Color?` | `colorScheme.outlineVariant` | Custom color |
+| `margin` | `EdgeInsetsGeometry` | `EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0)` | Margin around divider |
+
+```dart
+Row(
+  children: [
+    IconButton(icon: const Icon(Icons.content_cut), onPressed: () {}),
+    const M3EFloatingToolbarDivider(),
+    IconButton(icon: const Icon(Icons.copy), onPressed: () {}),
+  ],
+)
+```
+
 ---
 
 ### 5. Scroll Exit & Nested Scroll
@@ -425,16 +487,21 @@ Design token defaults and factory helpers.
 | Constant | Value | Description |
 |----------|-------|-------------|
 | `containerSize` | `64.0` | Toolbar height (horizontal) / width (vertical) |
+| `dockedHeight` | `64.0` | Docked toolbar container height |
+| `dockedHorizontalPadding` | `16.0` | Docked toolbar edge padding |
+| `dockedElevation` | `2.0` | Docked toolbar shadow elevation |
+| `dividerHeight` | `24.0` | Divider length along cross-axis |
+| `itemSpacing` | `4.0` | Spacing between toolbar actions |
 | `contentPadding` | `EdgeInsets.all(8)` | Default content padding |
 | `screenOffset` | `16.0` | Distance from screen edge |
 | `toolbarToFabGap` | `8.0` | Gap between toolbar and FAB |
 | `scrollDistanceThreshold` | `40.0` | Scroll threshold for expand/collapse |
 | `fabBaselineSize` | `56.0` | FAB size when expanded |
 | `fabMediumSize` | `80.0` | FAB size when collapsed |
-| `expandedElevation` | `0.0` | Elevation when expanded (no-FAB) |
+| `expandedElevation` | `2.0` | Elevation when expanded (no-FAB) |
 | `collapsedElevation` | `0.0` | Elevation when collapsed (no-FAB) |
-| `expandedElevationWithFab` | `1.0` | Elevation when expanded (with-FAB) |
-| `collapsedElevationWithFab` | `0.0` | Elevation when collapsed (with-FAB) |
+| `expandedElevationWithFab` | `2.0` | Elevation when expanded (with-FAB) |
+| `collapsedElevationWithFab` | `3.0` | Elevation when collapsed (with-FAB) |
 
 | Method | Returns | Description |
 |--------|---------|-------------|

@@ -1,3 +1,14 @@
+## 1.0.1
+
+### Changed
+
+- Introduced `M3EDockedToolbar` for pinned bottom toolbar layout with elevation tokens.
+- Added `M3EFloatingToolbarDivider` widget for spacing toolbar actions.
+- Added `alignment` parameter to all toolbar variants for direct stack positioning.
+- Added `screenOffset` to `M3EFloatingToolbarScrollBehavior` to account for safe area insets.
+- Updated container size token (`containerSize`) for M3E specification compliance.
+- Improved docked toolbar default elevation and token alignment.
+
 ## 1.0.0
 
 - pubspec: migrate to standalone material_ui package for flutter 3.47
